@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                ant target: 'example', buildFile: 'build.xml'
+                ant target: 'example', buildFile: './build.xml'
             }
         }
         stage('Test') {
