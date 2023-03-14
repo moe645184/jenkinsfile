@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
               echo 'build start'
-              withAnt(installation: 'ant') {
+              withAnt(installation: 'Ant') {
                   dir("/") {
                       sh "ant we"
                   }
