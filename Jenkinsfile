@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-              withAnt(installation: 'ant') {
+              withAnt(installation: 'default') {
                   dir("/") {
                     sh "ant we"
                   }
