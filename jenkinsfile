@@ -1,0 +1,14 @@
+pipeline{
+    agent{
+        label 'jenkins_agent1'
+    }
+    stages{
+        stage('gitclone'){
+            steps{
+                sshagent['slave01']{
+                    sh 'ssh jenkins@34.68.31.197 uptime' 
+                }
+            }
+        }
+    }
+}
