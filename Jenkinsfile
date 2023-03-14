@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                withAnt(installation: 'default') {
+                withAnt(installation: 'ant') {
                   ant(target: 'example', buildFile: 'build.xml')
                 }
             }
