@@ -6,11 +6,7 @@ pipeline {
             steps {
               withAnt(installation: 'ant') {
                   dir("/") {
-                    if (isUnix()) {
-                      sh "ant we"
-                    } else {
-                      bat "ant we"
-                    }
+                    sh "ant we"
                   }
               }
             }
