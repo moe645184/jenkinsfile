@@ -1,23 +1,21 @@
 pipeline {
     agent any
-
+    
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-                withAnt(installation: 'ant') {
-                  ant(target: 'example', buildFile: 'build.xml')
-                }
+                ant target: 'example', buildFile: 'build.xml'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                sh 'make check'
+                junit 'reports/**/*.xml'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                sh 'make deploy'
             }
         }
     }
