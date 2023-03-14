@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                ant(installation: 'default'){
+                ant(name: 'default') {
                   dir("/") {
                     if (isUnix()) {
                       sh "we"
