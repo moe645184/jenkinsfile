@@ -4,7 +4,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                ant target: 'example', buildFile: './build.xml'
+                ant{
+                  if (isUnix()) {
+                    sh "we"
+                  } else {
+                    bat "we"
+                  }
+                }
             }
         }
         stage('Test') {
