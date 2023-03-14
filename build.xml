@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="antproject" default="example">
+  <target name="example">
+    <echo message="hello world"/>
+  </target>
+  <target name="we">
+    <echo message="weeeeeee"/>
+  </target>
+</project>
