@@ -4,17 +4,24 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-              echo'build'
+              echo 'build start'
+              withAnt(installation: 'ant') {
+                  dir("/") {
+                      sh "ant we"
+                  }
+              }
+              echo 'build end'
             }
         }
         stage('Test') {
             steps {
-                echo'test'
+                sh 'make check'
+                junit 'reports/**/*.xml'
             }
         }
         stage('Deploy') {
             steps {
-                echo'deploy'
+                sh 'make deploy'
             }
         }
     }
