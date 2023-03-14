@@ -4,12 +4,16 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                ant{
+              withAnt(installation: 'ant') {
                   dir("/") {
-                      sh "we"
+                  if (isUnix()) {
+                    sh "ant we"
+                  } else {
+                    bat "ant we"
                   }
-                }
+              }
             }
+          }
         }
         stage('Test') {
             steps {
