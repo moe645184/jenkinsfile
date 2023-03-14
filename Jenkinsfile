@@ -1,27 +1,25 @@
 pipeline {
     agent any
-    
     stages {
         stage('Build') {
             steps {
-              echo 'build start'
-              withAnt(installation: 'Ant') {
-                  dir("/") {
-                      sh "ant we"
-                  }
-              }
-              echo 'build end'
+                withAnt(jdk: 'Java11', ant: 'ANT_HOME') {
+                    sh 'ant -f build.xml clean compile'
+                }
             }
         }
         stage('Test') {
             steps {
-                sh 'make check'
-                junit 'reports/**/*.xml'
+                withAnt(jdk: 'Java11', ant: 'ANT_HOME') {
+                    sh 'ant -f build.xml test'
+                }
             }
         }
         stage('Deploy') {
             steps {
-                sh 'make deploy'
+                withAnt(jdk: 'Java11', ant: 'ANT_HOME') {
+                    sh 'ant -f build.xml deploy'
+                }
             }
         }
     }
