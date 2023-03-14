@@ -4,11 +4,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                ant{
-                  if (isUnix()) {
-                    sh "we"
-                  } else {
-                    bat "we"
+                ant(installation: 'default'){
+                  dir("/") {
+                    if (isUnix()) {
+                      sh "we"
+                    } else {
+                      bat "we"
+                    }
                   }
                 }
             }
